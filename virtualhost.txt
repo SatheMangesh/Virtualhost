@@ -1,0 +1,26 @@
+#  Steps for setting up Virtual host on Windows Xampp
+
+1. Open C:\Windows\System32\drivers\etc\hosts and add following lines as per your project
+
+	##### For example
+
+	127.0.0.10       localhost
+	127.0.0.10       mysite.com
+	127.0.0.10       testsite.com
+
+2. Open C:\xampp\apache\conf\extra\httpd-vhosts.conf
+
+	And add following lines, remember ErrorLog and customLog files should be present at the specified location else you can remove those lines
+
+	<VirtualHost *:80>
+	    ServerAdmin webmaster@testsite.com
+	    DocumentRoot "C:/xampp/htdocs/testsite/"
+	    ServerName testsite.com
+	    ServerAlias testsite.com
+	    # ErrorLog and customLog files should be present at the specified location, otherwise Apache will not start
+	    ErrorLog "C:/xampp/htdocs/logs/test.com-error.log"
+	    CustomLog "C:/xampp/htdocs/logs/astro.com-access.log" common
+	</VirtualHost>
+
+3. Restart the Apache from XAMPP control panel or from command line and try to access testsite.com in the browser
+
